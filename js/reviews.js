@@ -65,5 +65,8 @@ function displayCustomerReviews() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	displayCustomerReviews();
+	// Only run displayCustomerReviews if we're on a page with reviews-container
+	if(document.getElementById("reviews-container")) {
+		displayCustomerReviews();
+	}
 });

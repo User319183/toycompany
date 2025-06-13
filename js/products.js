@@ -130,21 +130,25 @@ function displayAllProducts() {
 
 	products.forEach((product) => {
 		const productCard = document.createElement("div");
-		productCard.className = "col-md-6 col-lg-4";
+		productCard.className = "col-sm-6 col-lg-4";
 		productCard.setAttribute("data-category", product.category);
 
 		productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
-                    <div class="age-badge">${product.age}</div>
+                    <div class="age-badge">Age: ${product.age}</div>
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="price">$${product.price.toFixed(2)}</span>
-                        <button class="btn btn-primary btn-sm learn-more" data-product-id="${product.id}">Learn More</button>
+                    <p class="card-text flex-grow-1">${product.description}</p>
+                    <div class="product-card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">$${product.price.toFixed(2)}</span>
+                            <button class="btn btn-primary learn-more" data-product-id="${product.id}">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,6 +211,9 @@ function showProductDetails(productId) {
 		return;
 	}
 
+	// Update modal title
+	document.getElementById("productModalLabel").textContent = product.name;
+
 	let imageCarousel = '';
 	
 	if (product.images && product.images.length > 1) {
@@ -216,16 +223,16 @@ function showProductDetails(productId) {
 		
 		const carouselItems = product.images.map((img, index) => 
 			`<div class="carousel-item ${index === 0 ? 'active' : ''}">
-				<img src="${img}" class="d-block w-100" alt="${product.name} - View ${index + 1}">
+				<img src="${img}" class="d-block w-100 rounded-3" alt="${product.name} - View ${index + 1}">
 			</div>`
 		).join('');
 		
 		imageCarousel = `
-			<div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+			<div id="productImageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
 				<div class="carousel-indicators">
 					${carouselIndicators}
 				</div>
-				<div class="carousel-inner rounded-3">
+				<div class="carousel-inner rounded-3 shadow">
 					${carouselItems}
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
@@ -239,32 +246,47 @@ function showProductDetails(productId) {
 			</div>
 		`;
 	} else {
-		imageCarousel = `<img src="${product.image}" class="img-fluid rounded-3" alt="${product.name}">`;
+		imageCarousel = `<img src="${product.image}" class="img-fluid rounded-3 shadow" alt="${product.name}">`;
 	}
 	
 	modalContent.innerHTML = `
 		<div class="row">
-			<div class="col-md-6 mb-4 mb-md-0">
+			<div class="col-lg-6 mb-4 mb-lg-0">
 				${imageCarousel}
 			</div>
-			<div class="col-md-6">
-				<h2 class="mb-3">${product.name}</h2>
-				<div class="product-meta mb-3">
+			<div class="col-lg-6">
+				<div class="product-meta mb-3 d-flex gap-2">
 					<span class="badge bg-primary">Age: ${product.age}</span>
 					<span class="badge bg-secondary text-capitalize">${product.category}</span>
 				</div>
-				<p class="fs-4 fw-bold text-primary mb-3">$${product.price.toFixed(2)}</p>
-				<p class="product-description mb-4">${product.detailedDescription}</p>
+				<div class="price-tag mb-3 d-inline-block">
+					<span class="fs-2 fw-bold text-primary">$${product.price.toFixed(2)}</span>
+				</div>
+				<div class="product-description mb-4">
+					<p class="lead">${product.detailedDescription}</p>
+				</div>
 				<div class="product-features mb-4">
-					<h5>Features:</h5>
-					<ul class="list-unstyled">
+					<h5 class="fw-bold mb-3">Product Features</h5>
+					<ul class="feature-list">
 						<li><i class="fas fa-check-circle text-success me-2"></i> Handcrafted with care</li>
 						<li><i class="fas fa-check-circle text-success me-2"></i> Sustainable materials</li>
 						<li><i class="fas fa-check-circle text-success me-2"></i> Child-safe finishes</li>
 						<li><i class="fas fa-check-circle text-success me-2"></i> Durable construction</li>
 					</ul>
 				</div>
-				<button class="btn btn-primary w-100">Add to Cart</button>
+				<div class="product-actions">
+					<div class="quantity-selector mb-3 d-flex align-items-center">
+						<span class="me-3 fw-bold">Quantity:</span>
+						<div class="input-group" style="width: 130px">
+							<button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
+							<input type="text" class="form-control text-center" value="1" aria-label="Quantity">
+							<button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+						</div>
+					</div>
+					<button class="btn btn-primary btn-lg w-100">
+						<i class="fas fa-shopping-cart me-2"></i> Add to Cart
+					</button>
+				</div>
 			</div>
 		</div>
 	`;

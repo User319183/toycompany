@@ -64,29 +64,17 @@
             </div>
         </section>
 
-        <section class="product-filter py-4 bg-light">
+        <section class="product-filter py-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="mb-3 mb-md-0">
-                                <h2 class="h5 mb-0">Filter by:</h2>
-                            </div>
-                            <div class="d-flex flex-wrap">
-                                <button class="btn btn-outline-primary me-2 mb-2 mb-md-0 filter-btn active"
-                                    data-filter="all">All Products</button>
-                                <button class="btn btn-outline-primary me-2 mb-2 mb-md-0 filter-btn"
-                                    data-filter="trains">Trains</button>
-                                <button class="btn btn-outline-primary me-2 mb-2 mb-md-0 filter-btn"
-                                    data-filter="blocks">Blocks</button>
-                                <button class="btn btn-outline-primary me-2 mb-2 mb-md-0 filter-btn"
-                                    data-filter="boats">Boats</button>
-                                <button class="btn btn-outline-primary me-2 mb-2 mb-md-0 filter-btn"
-                                    data-filter="cars">Cars</button>
-                                <button class="btn btn-outline-primary mb-2 mb-md-0 filter-btn"
-                                    data-filter="airplanes">Airplanes</button>
-                            </div>
-                        </div>
+                <div class="text-center mb-3">
+                    <h2 class="h4 fw-bold mb-4">Filter by Category</h2>
+                    <div class="filter-container">
+                        <button class="filter-btn active" data-filter="all">All Products</button>
+                        <button class="filter-btn" data-filter="trains">Trains</button>
+                        <button class="filter-btn" data-filter="blocks">Blocks</button>
+                        <button class="filter-btn" data-filter="boats">Boats</button>
+                        <button class="filter-btn" data-filter="cars">Cars</button>
+                        <button class="filter-btn" data-filter="airplanes">Airplanes</button>
                     </div>
                 </div>
             </div>
@@ -94,21 +82,14 @@
 
         <section class="products-gallery py-5">
             <div class="container">
+                <div class="section-header text-center mb-5">
+                    <span class="badge bg-primary rounded-pill text-white mb-3">Our Collection</span>
+                    <h2 class="display-6 fw-bold">Handcrafted Wooden Toys</h2>
+                    <p class="lead text-muted mx-auto" style="max-width: 700px;">Each toy is meticulously crafted from
+                        sustainable materials to inspire creativity and last for generations.</p>
+                </div>
                 <div class="row g-4" id="products-container">
                     <!-- Products will be dynamically loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <section class="customer-reviews py-5 bg-light">
-            <div class="container">
-                <div class="section-header text-center mb-5">
-                    <span class="badge bg-primary rounded-pill text-white mb-3">Testimonials</span>
-                    <h2 class="display-6 fw-bold">What Our Customers Say</h2>
-                    <p class="lead text-muted mx-auto" style="max-width: 500px;">See what families think about our
-                        handcrafted wooden toys.</p>
-                </div>
-                <div class="row" id="reviews-container">
                 </div>
             </div>
         </section>
@@ -186,15 +167,16 @@
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                <div class="modal-header align-items-center">
+                    <h4 class="modal-title fw-bold" id="productModalLabel">Product Details</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="productModalContent">
+                <div class="modal-body py-4" id="productModalContent">
                     <!-- Product details will be dynamically loaded here -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Continue
+                        Shopping</button>
                 </div>
             </div>
         </div>
