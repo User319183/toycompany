@@ -86,19 +86,21 @@ function displayFeaturedProducts() {
 	const featuredProducts = products.filter((product) => product.featured);
 	featuredProducts.forEach((product) => {
 		const productCard = document.createElement("div");
-		productCard.className = "col-md-6 col-lg-3";
-
-		productCard.innerHTML = `
+		productCard.className = "col-md-6 col-lg-3";        productCard.innerHTML = `
             <div class="card product-card h-100">
-                <img src="${product.image}" class="card-img-top" alt="${product.name
-			}" onerror="this.src='images/placeholder.jpg'">
-                <div class="card-body">
+                <div class="product-image-container">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
+                    <div class="age-badge">Age: ${product.age}</div>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <div class="category-tag">${product.category}</div>
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.description}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="price">$${product.price.toFixed(2)}</span>
-                        <button class="btn btn-outline-primary btn-sm view-details" data-product-id="${product.id
-			}">View Details</button>
+                    <div class="product-card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">${product.price.toFixed(2)}</span>
+                            <button class="btn btn-outline-primary btn-sm view-details" data-product-id="${product.id}">View Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,20 +131,19 @@ function displayAllProducts() {
 	products.forEach((product) => {
 		const productCard = document.createElement("div");
 		productCard.className = "col-sm-6 col-lg-4";
-		productCard.setAttribute("data-category", product.category);
-
-		productCard.innerHTML = `
+		productCard.setAttribute("data-category", product.category);        productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
                     <div class="age-badge">Age: ${product.age}</div>
                 </div>
                 <div class="card-body d-flex flex-column">
+                    <div class="category-tag">${product.category}</div>
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text flex-grow-1">${product.description}</p>
                     <div class="product-card-footer">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="price">$${product.price.toFixed(2)}</span>
+                            <span class="price">${product.price.toFixed(2)}</span>
                             <button class="btn btn-primary learn-more" data-product-id="${product.id}">
                                 Learn More <i class="fas fa-arrow-right ms-1"></i>
                             </button>
