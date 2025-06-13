@@ -1,47 +1,62 @@
 const products = [
 	{
 		id: 1,
-		name: "Wooden Train Set",
-		price: 34.99,
-		image: "images/train2.jpg",
-		description:
-			"Handcrafted birch wood train set with engine and three cars. Perfect for imaginative play.",
+		name: "Wooden Airplane",
+		price: 24.99,
+		image: "images/plane1.jpg",
+		images: ["images/plane1.jpg", "images/plane2.jpg", "images/plane3.jpg"],
+		description: "Soar through imaginative skies with this classic wooden airplane.",
+		detailedDescription: "Handcrafted from sustainable Baltic birch wood with a safe, natural harvest finish and a spinning propeller. Measures 3.5\"H x 7\"L x 7\"W.",
+		age: "Toddlers",
+		category: "airplanes",
 		featured: true,
 	},
 	{
 		id: 2,
-		name: "Building Blocks",
-		price: 29.99,
-		image: "images/block1.jpg",
-		description:
-			"Set of 24 colorful wooden building blocks in various shapes. Helps develop fine motor skills.",
+		name: "Wooden Train Set",
+		price: 34.99,
+		image: "images/train2.jpg",
+		images: ["images/train2.jpg", "images/train1.jpg", "images/train3.jpg", "images/train4.jpg"],
+		description: "Embark on a charming journey with this beautiful handcrafted wooden train set.",
+		detailedDescription: "Engine and three interchangeable cars boast intricate details made from real beech wood. Large size (84cm L x 11cm H x 13cm W) with moving wheels and a fully ecological design.",
+		age: "3+",
+		category: "trains",
 		featured: true,
 	},
 	{
 		id: 3,
 		name: "Wooden Boat",
-		price: 24.99,
+		price: 29.99,
 		image: "images/boat1.jpg",
-		description:
-			"Handcrafted wooden sailboat made from premium maple. Great for bath time or display.",
+		images: ["images/boat1.jpg", "images/boat2.jpg"],
+		description: "Set sail for bathtub adventures with this adorable wooden boat.",
+		detailedDescription: "Made from solid Maine white pine, this handcrafted toy floats and features rounded edges for safety. Includes two peg \"lobster people.\" Size: 10.5\"W x 3.5\"H.",
+		age: "All ages",
+		category: "boats",
 		featured: true,
 	},
 	{
 		id: 4,
-		name: "Classic Toy Car",
-		price: 19.99,
-		image: "images/car2.jpg",
-		description:
-			"Vintage-inspired wooden toy car with rolling wheels. Crafted with smooth edges for safe play.",
+		name: "Wooden Block Set",
+		price: 42.99,
+		image: "images/block1.jpg",
+		images: ["images/block1.jpg", "images/block2.jpg", "images/block3.jpg", "images/block4.jpg", "images/block5.jpg"],
+		description: "Build creativity and imagination with this high-quality, 72-piece block set.",
+		detailedDescription: "Made from naturally finished and smooth-sanded hardwood blocks, this set comes in a convenient wooden storage crate (13\" L x 12\" W x 2\" H).",
+		age: "3+",
+		category: "blocks",
 		featured: true,
 	},
 	{
 		id: 5,
-		name: "Wooden Airplane",
-		price: 22.99,
-		image: "images/plane1.jpg",
-		description:
-			"Handcrafted wooden airplane with spinning propeller. Encourages imaginative play and storytelling.",
+		name: "Wooden Car",
+		price: 19.99,
+		image: "images/car1.jpg",
+		images: ["images/car1.jpg", "images/car2.jpg", "images/car3.jpg", "images/car4.jpg"],
+		description: "This heirloom-quality wooden car is a timeless treasure.",
+		detailedDescription: "Handcrafted from domestic and exotic hardwoods with a clear lacquer finish, this unique car will inspire generations of imaginative play. Please note potential choking hazards for small children.",
+		age: "All ages",
+		category: "cars",
 		featured: false,
 	},
 	{
@@ -49,8 +64,11 @@ const products = [
 		name: "Deluxe Train Engine",
 		price: 27.99,
 		image: "images/train7.jpg",
-		description:
-			"Premium wooden train engine with detailed craftsmanship. Compatible with most wooden track systems.",
+		images: ["images/train7.jpg", "images/train5.jpg", "images/train6.jpg"],
+		description: "Premium wooden train engine with detailed craftsmanship.",
+		detailedDescription: "This premium wooden train engine features detailed craftsmanship and is compatible with most wooden track systems. Made from sustainable Baltic birch wood with natural, child-safe finishes.",
+		age: "3+",
+		category: "trains",
 		featured: false,
 	},
 ];
@@ -99,62 +117,174 @@ function displayFeaturedProducts() {
 	});
 }
 
-function showProductDetails(productId) {
-	const product = products.find((p) => p.id === productId);
+function displayAllProducts() {
+	const productsContainer = document.getElementById("products-container");
 
-	if (!product) {
-		console.error(`Product with ID ${productId} not found!`);
+	if (!productsContainer) {
+		console.error("Products container not found!");
 		return;
 	}
 
-	let productModal = document.getElementById("productModal");
+	// Clear existing content
+	productsContainer.innerHTML = "";
 
-	if (!productModal) {
-		const modalHTML = `
-        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="productModalLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img id="modalProductImage" class="img-fluid rounded" alt="Product Image">
-                            </div>
-                            <div class="col-md-6">
-                                <p id="modalProductDescription"></p>
-                                <h4 id="modalProductPrice" class="price mt-3"></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add to Cart</button>
+	products.forEach((product) => {
+		const productCard = document.createElement("div");
+		productCard.className = "col-md-6 col-lg-4";
+		productCard.setAttribute("data-category", product.category);
+
+		productCard.innerHTML = `
+            <div class="card product-card h-100">
+                <div class="product-image-container">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
+                    <div class="age-badge">${product.age}</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">$${product.price.toFixed(2)}</span>
+                        <button class="btn btn-primary btn-sm learn-more" data-product-id="${product.id}">Learn More</button>
                     </div>
                 </div>
             </div>
-        </div>
         `;
-		const modalContainer = document.createElement("div");
-		modalContainer.innerHTML = modalHTML;
-		document.body.appendChild(modalContainer);
 
-		productModal = document.getElementById("productModal");
+		productsContainer.appendChild(productCard);
+	});
+
+	// Add event listeners to all "Learn More" buttons
+	document.querySelectorAll(".learn-more").forEach((button) => {
+		button.addEventListener("click", function () {
+			const productId = parseInt(this.getAttribute("data-product-id"));
+			showProductDetails(productId);
+		});
+	});
+}
+
+function setupFilterButtons() {
+	const filterButtons = document.querySelectorAll(".filter-btn");
+	const productCards = document.querySelectorAll("[data-category]");
+
+	filterButtons.forEach((button) => {
+		button.addEventListener("click", function () {
+			const filter = this.getAttribute("data-filter");
+
+			// Update active state on buttons
+			filterButtons.forEach((btn) => btn.classList.remove("active"));
+			this.classList.add("active");
+
+			// Show all products if filter is "all", otherwise filter by category
+			if (filter === "all") {
+				productCards.forEach((card) => {
+					card.style.display = "block";
+				});
+			} else {
+				productCards.forEach((card) => {
+					if (card.getAttribute("data-category") === filter) {
+						card.style.display = "block";
+					} else {
+						card.style.display = "none";
+					}
+				});
+			}
+		});
+	});
+}
+
+function showProductDetails(productId) {
+	const product = products.find((p) => p.id === productId);
+	
+	if (!product) {
+		console.error("Product not found!");
+		return;
 	}
-	document.getElementById("productModalLabel").textContent = product.name;
-	document.getElementById("modalProductImage").src = product.image;
-	document.getElementById("modalProductImage").alt = product.name;
-	document.getElementById("modalProductDescription").textContent =
-		product.description;
-	document.getElementById(
-		"modalProductPrice"
-	).textContent = `$${product.price.toFixed(2)}`;
-	const modal = new bootstrap.Modal(productModal);
-	modal.show();
+	
+	const modalContent = document.getElementById("productModalContent");
+	
+	if (!modalContent) {
+		console.error("Modal content container not found!");
+		return;
+	}
+
+	let imageCarousel = '';
+	
+	if (product.images && product.images.length > 1) {
+		const carouselIndicators = product.images.map((img, index) => 
+			`<button type="button" data-bs-target="#productImageCarousel" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>`
+		).join('');
+		
+		const carouselItems = product.images.map((img, index) => 
+			`<div class="carousel-item ${index === 0 ? 'active' : ''}">
+				<img src="${img}" class="d-block w-100" alt="${product.name} - View ${index + 1}">
+			</div>`
+		).join('');
+		
+		imageCarousel = `
+			<div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					${carouselIndicators}
+				</div>
+				<div class="carousel-inner rounded-3">
+					${carouselItems}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#productImageCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		`;
+	} else {
+		imageCarousel = `<img src="${product.image}" class="img-fluid rounded-3" alt="${product.name}">`;
+	}
+	
+	modalContent.innerHTML = `
+		<div class="row">
+			<div class="col-md-6 mb-4 mb-md-0">
+				${imageCarousel}
+			</div>
+			<div class="col-md-6">
+				<h2 class="mb-3">${product.name}</h2>
+				<div class="product-meta mb-3">
+					<span class="badge bg-primary">Age: ${product.age}</span>
+					<span class="badge bg-secondary text-capitalize">${product.category}</span>
+				</div>
+				<p class="fs-4 fw-bold text-primary mb-3">$${product.price.toFixed(2)}</p>
+				<p class="product-description mb-4">${product.detailedDescription}</p>
+				<div class="product-features mb-4">
+					<h5>Features:</h5>
+					<ul class="list-unstyled">
+						<li><i class="fas fa-check-circle text-success me-2"></i> Handcrafted with care</li>
+						<li><i class="fas fa-check-circle text-success me-2"></i> Sustainable materials</li>
+						<li><i class="fas fa-check-circle text-success me-2"></i> Child-safe finishes</li>
+						<li><i class="fas fa-check-circle text-success me-2"></i> Durable construction</li>
+					</ul>
+				</div>
+				<button class="btn btn-primary w-100">Add to Cart</button>
+			</div>
+		</div>
+	`;
+	
+	const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+	productModal.show();
+}
+
+function setupProductDetails() {
+	// This ensures that product modals can be triggered from anywhere
+	document.querySelectorAll('[data-product-id]').forEach(element => {
+		element.addEventListener('click', function() {
+			const productId = parseInt(this.getAttribute('data-product-id'));
+			showProductDetails(productId);
+		});
+	});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	displayFeaturedProducts();
+	if (document.getElementById("featured-products-container")) {
+		displayFeaturedProducts();
+	}
 });
