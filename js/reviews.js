@@ -1,72 +1,86 @@
-const reviews = [
-	{
-		id: 1,
-		name: "Samantha J.",
-		review: "Beautiful craftsmanship! My daughter loves her wooden train set. The quality is exceptional and I know it will last for years.",
-		rating: 5,
-	},
-	{
-		id: 2,
-		name: "Michael T.",
-		review: "The building blocks are perfect for my son. He spends hours creating different structures. Love that they're made from sustainable wood.",
-		rating: 5,
-	},
-	{
-		id: 3,
-		name: "Rachel K.",
-		review: "We purchased the rocking horse for our grandson. The attention to detail is amazing and it's very sturdy. Highly recommend!",
-		rating: 4,
-	},
-	{
-		id: 4,
-		name: "David L.",
-		review: "The stacking rings have been a hit with our twins. Great quality and the colors are vibrant without being overwhelming.",
-		rating: 5,
-	},
+// Sample customer reviews data
+const customerReviews = [
+    {
+        name: "Sarah Johnson",
+        location: "New York",
+        rating: 5,
+        text: "The wooden train set we purchased for our son's birthday is absolutely beautiful! The craftsmanship is outstanding and it's clear that a lot of care went into making it. He plays with it every day.",
+        image: "images/avatar1.jpg"
+    },
+    {
+        name: "Michael Peterson",
+        location: "Chicago",
+        rating: 5,
+        text: "These are the kinds of toys that get passed down through generations. The wooden airplane we bought has survived two energetic boys and still looks almost new. Worth every penny!",
+        image: "images/avatar2.jpg"
+    },
+    {
+        name: "Emily Rodriguez",
+        location: "Seattle",
+        rating: 4,
+        text: "I love that these toys don't need batteries! My daughter uses her imagination when playing with her wooden boat, making up new stories every time. The quality is excellent.",
+        image: "images/avatar3.jpg"
+    },
+    {
+        name: "David Wilson",
+        location: "Austin",
+        rating: 5,
+        text: "I was hesitant about the price at first, but after seeing how much my kids love these wooden blocks and how durable they are, I'm completely convinced. These toys are an investment.",
+        image: "images/avatar4.jpg"
+    }
 ];
 
-function generateStarRating(rating) {
-	let stars = "";
-
-	for (let i = 0; i < rating; i++) {
-		stars += '<i class="fas fa-star"></i>';
-	}
-
-	for (let i = rating; i < 5; i++) {
-		stars += '<i class="far fa-star"></i>';
-	}
-
-	return stars;
-}
-
-function displayCustomerReviews() {
-	const reviewsContainer = document.getElementById("reviews-container");
-
-	if (!reviewsContainer) {
-		console.error("Reviews container not found!");
-		return;
-	}
-	reviews.forEach((review) => {
-		const reviewCard = document.createElement("div");
-		reviewCard.className = "col-md-6 col-lg-3 mb-4";
-
-		reviewCard.innerHTML = `
-            <div class="review-card h-100">
-                <div class="stars">
-                    ${generateStarRating(review.rating)}
+// Function to display reviews
+function displayReviews() {
+    const reviewsContainer = document.getElementById('reviews-container');
+    
+    if (!reviewsContainer) {
+        console.error("Reviews container not found");
+        return;
+    }
+    
+    // Clear the container
+    reviewsContainer.innerHTML = '';
+    
+    // Create HTML for each review
+    customerReviews.forEach(review => {
+        // Create stars HTML based on rating
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+            if (i < review.rating) {
+                starsHTML += '<i class="fas fa-star text-warning"></i>';
+            } else {
+                starsHTML += '<i class="far fa-star text-warning"></i>';
+            }
+        }
+        
+        // Create review card
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'col-md-6 col-lg-3';
+        
+        reviewCard.innerHTML = `
+            <div class="card h-100 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="${review.image}" alt="${review.name}" class="rounded-circle me-3" width="50" height="50" onerror="this.src='images/avatar-placeholder.png'">
+                        <div>
+                            <h5 class="card-title mb-0">${review.name}</h5>
+                            <small class="text-muted">${review.location}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        ${starsHTML}
+                    </div>
+                    <p class="card-text">${review.text}</p>
                 </div>
-                <p class="review-text">"${review.review}"</p>
-                <p class="customer-name">- ${review.name}</p>
             </div>
         `;
-
-		reviewsContainer.appendChild(reviewCard);
-	});
+        
+        reviewsContainer.appendChild(reviewCard);
+    });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-	// Only run displayCustomerReviews if we're on a page with reviews-container
-	if(document.getElementById("reviews-container")) {
-		displayCustomerReviews();
-	}
+// Initialize reviews when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    displayReviews();
 });
