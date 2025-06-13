@@ -82,5 +82,13 @@ function displayReviews() {
 
 // Initialize reviews when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    const reviewsContainer = document.getElementById('reviews-container');
+    
+    // Only proceed if the reviews container exists on this page
+    if (!reviewsContainer) {
+        console.log('Reviews container not found on this page. Skipping reviews loading.');
+        return;
+    }
+    
     displayReviews();
 });
