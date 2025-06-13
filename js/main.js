@@ -79,10 +79,10 @@ function initScrollToTopButton() {
 
 // Initialize parallax effect
 function initParallax() {
-	window.addEventListener('scroll', function() {
+	window.addEventListener('scroll', function () {
 		const parallaxElements = document.querySelectorAll('.parallax-element');
 		let scrollPosition = window.pageYOffset;
-		
+
 		parallaxElements.forEach(element => {
 			const speed = element.dataset.speed || 0.5;
 			element.style.transform = `translateY(${scrollPosition * speed}px)`;
@@ -96,7 +96,7 @@ function initCounters() {
 	const options = {
 		threshold: 0.7
 	};
-	
+
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -115,7 +115,7 @@ function initCounters() {
 			}
 		});
 	}, options);
-	
+
 	counterElements.forEach(counter => {
 		observer.observe(counter);
 	});
@@ -125,38 +125,38 @@ function initCounters() {
 function initReviewCarousel() {
 	const reviewsContainer = document.getElementById('reviews-container');
 	if (!reviewsContainer) return;
-	
+
 	reviewsContainer.classList.add('carousel', 'slide');
 	reviewsContainer.setAttribute('data-bs-ride', 'carousel');
 	reviewsContainer.id = 'reviewCarousel';
-	
+
 	// Get all review cards and group them for the carousel
 	const reviewCards = Array.from(reviewsContainer.children);
 	const carouselInner = document.createElement('div');
 	carouselInner.className = 'carousel-inner';
-	
+
 	// Group cards into pairs (or adjust based on screen size)
 	for (let i = 0; i < reviewCards.length; i += 2) {
 		const carouselItem = document.createElement('div');
 		carouselItem.className = 'carousel-item';
 		if (i === 0) carouselItem.classList.add('active');
-		
+
 		const row = document.createElement('div');
 		row.className = 'row justify-content-center';
-		
+
 		row.appendChild(reviewCards[i]);
 		if (reviewCards[i + 1]) {
 			row.appendChild(reviewCards[i + 1]);
 		}
-		
+
 		carouselItem.appendChild(row);
 		carouselInner.appendChild(carouselItem);
 	}
-	
+
 	// Clear and rebuild the reviews container as a carousel
 	reviewsContainer.innerHTML = '';
 	reviewsContainer.appendChild(carouselInner);
-	
+
 	// Carousel controls
 	const prevButton = document.createElement('button');
 	prevButton.className = 'carousel-control-prev';
@@ -164,14 +164,14 @@ function initReviewCarousel() {
 	prevButton.dataset.bsTarget = '#reviewCarousel';
 	prevButton.dataset.bsSlide = 'prev';
 	prevButton.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>';
-	
+
 	const nextButton = document.createElement('button');
 	nextButton.className = 'carousel-control-next';
 	nextButton.type = 'button';
 	nextButton.dataset.bsTarget = '#reviewCarousel';
 	nextButton.dataset.bsSlide = 'next';
 	nextButton.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>';
-	
+
 	reviewsContainer.appendChild(prevButton);
 	reviewsContainer.appendChild(nextButton);
 }
@@ -180,8 +180,8 @@ function initReviewCarousel() {
 function initNavbarScroll() {
 	const navbar = document.querySelector('.navbar');
 	if (!navbar) return;
-	
-	window.addEventListener('scroll', function() {
+
+	window.addEventListener('scroll', function () {
 		if (window.scrollY > 50) {
 			navbar.classList.add('scrolled');
 		} else {
@@ -229,14 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	window.addEventListener("scroll", revealOnScroll);
 	revealOnScroll();
-	
+
 	// Initialize image hover effects
 	const productImages = document.querySelectorAll('.product-card img');
 	productImages.forEach(img => {
-		img.addEventListener('mouseover', function() {
+		img.addEventListener('mouseover', function () {
 			this.style.transform = 'scale(1.05) rotate(2deg)';
 		});
-		img.addEventListener('mouseout', function() {
+		img.addEventListener('mouseout', function () {
 			this.style.transform = 'scale(1)';
 		});
 	});

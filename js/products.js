@@ -90,17 +90,15 @@ function displayFeaturedProducts() {
 
 		productCard.innerHTML = `
             <div class="card product-card h-100">
-                <img src="${product.image}" class="card-img-top" alt="${
-			product.name
-		}" onerror="this.src='images/placeholder.jpg'">
+                <img src="${product.image}" class="card-img-top" alt="${product.name
+			}" onerror="this.src='images/placeholder.jpg'">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.description}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">$${product.price.toFixed(2)}</span>
-                        <button class="btn btn-outline-primary btn-sm view-details" data-product-id="${
-							product.id
-						}">View Details</button>
+                        <button class="btn btn-outline-primary btn-sm view-details" data-product-id="${product.id
+			}">View Details</button>
                     </div>
                 </div>
             </div>
@@ -198,14 +196,14 @@ function setupFilterButtons() {
 
 function showProductDetails(productId) {
 	const product = products.find((p) => p.id === productId);
-	
+
 	if (!product) {
 		console.error("Product not found!");
 		return;
 	}
-	
+
 	const modalContent = document.getElementById("productModalContent");
-	
+
 	if (!modalContent) {
 		console.error("Modal content container not found!");
 		return;
@@ -215,18 +213,18 @@ function showProductDetails(productId) {
 	document.getElementById("productModalLabel").textContent = product.name;
 
 	let imageCarousel = '';
-	
+
 	if (product.images && product.images.length > 1) {
-		const carouselIndicators = product.images.map((img, index) => 
+		const carouselIndicators = product.images.map((img, index) =>
 			`<button type="button" data-bs-target="#productImageCarousel" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>`
 		).join('');
-		
-		const carouselItems = product.images.map((img, index) => 
+
+		const carouselItems = product.images.map((img, index) =>
 			`<div class="carousel-item ${index === 0 ? 'active' : ''}">
 				<img src="${img}" class="d-block w-100 rounded-3" alt="${product.name} - View ${index + 1}">
 			</div>`
 		).join('');
-		
+
 		imageCarousel = `
 			<div id="productImageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
 				<div class="carousel-indicators">
@@ -248,7 +246,7 @@ function showProductDetails(productId) {
 	} else {
 		imageCarousel = `<img src="${product.image}" class="img-fluid rounded-3 shadow" alt="${product.name}">`;
 	}
-	
+
 	modalContent.innerHTML = `
 		<div class="row">
 			<div class="col-lg-6 mb-4 mb-lg-0">
@@ -290,7 +288,7 @@ function showProductDetails(productId) {
 			</div>
 		</div>
 	`;
-	
+
 	const productModal = new bootstrap.Modal(document.getElementById('productModal'));
 	productModal.show();
 }
@@ -298,7 +296,7 @@ function showProductDetails(productId) {
 function setupProductDetails() {
 	// This ensures that product modals can be triggered from anywhere
 	document.querySelectorAll('[data-product-id]').forEach(element => {
-		element.addEventListener('click', function() {
+		element.addEventListener('click', function () {
 			const productId = parseInt(this.getAttribute('data-product-id'));
 			showProductDetails(productId);
 		});
