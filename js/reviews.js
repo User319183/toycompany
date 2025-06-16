@@ -1,7 +1,7 @@
 // Sample customer reviews data
 const customerReviews = [
 	{
-		name: "Sarah Johnson",
+		name: "Stella Bella",
 		location: "New York",
 		rating: 5,
 		text: "The wooden train set we purchased for our son's birthday is absolutely beautiful! The craftsmanship is outstanding and it's clear that a lot of care went into making it. He plays with it every day.",
