@@ -19,6 +19,52 @@ body {
     color: #222;
 }
 
+/* Our Values Section Styling */
+.our-values {
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.our-values .value-icon {
+    height: 90px;
+    width: 90px;
+    margin: 0 auto;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.our-values .card:nth-child(2) .value-icon {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.our-values .card:nth-child(3) .value-icon {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hover-card:hover .value-icon {
+    transform: scale(1.1);
+}
+
+.our-values .badge {
+    padding: 8px 15px;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
 h1,
 h2,
 h3,
