@@ -1,0 +1,15 @@
+/* Footer Styles */
+
+footer {
+    background: #222;
+    color: #fff;
+}
+
+footer a {
+    color: #ffc107;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}

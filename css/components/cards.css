@@ -1,0 +1,164 @@
+/* Card Styles */
+
+/* Product Cards */
+.product-card {
+	border: none;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	transition: var(--transition);
+	margin-bottom: 2rem;
+	position: relative;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	background: white;
+}
+
+.product-card:hover {
+	transform: translateY(-10px);
+	box-shadow: var(--box-shadow);
+}
+
+.product-card::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: var(--gradient);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.5s ease;
+}
+
+.product-card:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.product-card img {
+	height: 220px;
+	object-fit: cover;
+	transition: var(--transition);
+	width: 100%;
+	object-position: center;
+}
+
+.product-card:hover img {
+	transform: scale(1.1);
+	filter: brightness(1.05);
+}
+
+.product-card .card-body {
+	position: relative;
+	z-index: 1;
+	background: white;
+	padding: 1.5rem;
+}
+
+.product-card .card-title {
+	font-weight: 700;
+	margin-bottom: 0.75rem;
+	transition: var(--transition);
+	font-size: 1.2rem;
+}
+
+.product-card:hover .card-title {
+	color: var(--primary-color);
+}
+
+.product-card .card-text {
+	color: #666;
+	margin-bottom: 1.25rem;
+}
+
+.product-card .price {
+	font-weight: 700;
+	color: var(--primary-color);
+	font-size: 1.3rem;
+	letter-spacing: -0.5px;
+}
+
+.product-card .product-card-footer {
+	padding-top: 1rem;
+	border-top: 1px solid #f0f0f0;
+}
+
+/* Review Cards */
+.review-card {
+	background: white;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	padding: 1.5rem;
+	transition: var(--transition);
+	position: relative;
+}
+
+.review-card:hover {
+	transform: translateY(-5px);
+}
+
+.review-card .stars {
+	color: var(--secondary-color);
+	margin-bottom: 1rem;
+}
+
+.review-card .review-text {
+	font-style: italic;
+	margin-bottom: 1rem;
+	font-size: 0.95rem;
+}
+
+.review-card .customer-name {
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Hover Cards */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Contact Info Cards */
+.contact-info-card {
+    transition: transform 0.3s ease;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Value Cards */
+.our-values .value-icon {
+    height: 90px;
+    width: 90px;
+    margin: 0 auto;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.our-values .card:nth-child(2) .value-icon {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.our-values .card:nth-child(3) .value-icon {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.hover-card:hover .value-icon {
+    transform: scale(1.1);
+}
+
+.our-values .badge {
+    padding: 8px 15px;
+    font-weight: 500;
+    border-radius: 30px;
+}

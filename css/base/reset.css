@@ -1,0 +1,30 @@
+/* 
+* reset.css - Basic reset and common styles
+*/
+
+body {
+    font-family: var(--font-primary);
+    background: #f8f9fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}

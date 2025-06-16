@@ -1,0 +1,82 @@
+/* Modal Styles */
+
+.modal-content {
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.modal-header {
+	border-bottom: 1px solid #f0f0f0;
+	padding: 1.5rem;
+}
+
+.modal-body {
+	padding: 1.5rem;
+}
+
+.modal-footer {
+	border-top: 1px solid #f0f0f0;
+	padding: 1.5rem;
+}
+
+.modal-title {
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+/* Product Modal Specific Styles */
+.feature-list {
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 1.5rem;
+}
+
+.feature-list li {
+	padding: 0.5rem 0;
+	border-bottom: 1px dashed #eaeaea;
+	display: flex;
+	align-items: center;
+}
+
+.feature-list li:last-child {
+	border-bottom: none;
+}
+
+.feature-list li .fas {
+	color: var(--primary-color);
+}
+
+.price-tag {
+	background-color: rgba(76, 175, 80, 0.1);
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+}
+
+#productImageCarousel .carousel-control-prev,
+#productImageCarousel .carousel-control-next {
+	width: 40px;
+	height: 40px;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.8;
+	top: 50%;
+	transform: translateY(-50%);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#productImageCarousel .carousel-control-prev {
+	left: 15px;
+}
+
+#productImageCarousel .carousel-control-next {
+	right: 15px;
+}
+
+#productImageCarousel .carousel-control-prev-icon,
+#productImageCarousel .carousel-control-next-icon {
+	width: 20px;
+	height: 20px;
+	filter: invert(1);
+}
