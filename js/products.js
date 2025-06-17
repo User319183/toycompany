@@ -90,10 +90,8 @@ function displayFeaturedProducts() {
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
-                    <div class="age-badge">Age: ${product.age}</div>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    <div class="category-tag">${product.category}</div>
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.description}</p>
                     <div class="product-card-footer">
@@ -135,7 +133,7 @@ function displayAllProducts() {
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
-                    <div class="age-badge">Age: ${product.age}</div>
+                    <div class="age-badge"><i class="fas fa-child me-1"></i> ${product.age}</div>
                 </div>
                 <div class="card-body d-flex flex-column">
                     <div class="category-tag">${product.category}</div>

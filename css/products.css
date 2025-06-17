@@ -75,20 +75,7 @@
     margin-bottom: 1.5rem;
 }
 
-.age-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--accent-color);
-    color: white;
-    font-weight: 600;
-    padding: 7px 15px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    box-shadow: 0 3px 10px rgba(255, 87, 34, 0.3);
-    z-index: 10;
-    transition: all 0.3s ease;
-}
+/* Age badge styles have been moved to components/product-cards.css */
 
 .category-tag {
     display: inline-block;
