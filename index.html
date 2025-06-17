@@ -7,6 +7,7 @@
     <title>Little Bird Toys</title>
     <link rel="icon" href="images/LBTCo BW bird logo ORANGE.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -33,26 +34,27 @@
         </div>
     </nav>
     <main>
-        <section class="py-5 bg-light text-center hero">
+        <section class="hero-section">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <h1 class="display-4 fw-bold mb-3">Handcrafted Wooden Toys</h1>
-                        <p class="lead mb-4">Quality toys that inspire creativity and imagination in children of all
-                            ages.</p>
-                        <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+                        <h1>Handcrafted Wooden Toys</h1>
+                        <p class="lead">Quality toys that inspire creativity and imagination in children of all ages.</p>
+                        <div class="cta-buttons">
+                            <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+                        </div>
                     </div>
                     <div class="col-lg-5">
-                        <img src="images/train1.jpg" alt="Wooden toy train" class="img-fluid rounded shadow">
+                        <img src="images/train1.jpg" alt="Wooden toy train" class="hero-image img-fluid">
                     </div>
                 </div>
             </div>
         </section>
-        <section class="py-5">
+        <section class="featured-products">
             <div class="container">
                 <div class="text-center mb-5">
                     <span class="badge bg-primary mb-2">Our Collection</span>
-                    <h2 class="fw-bold mb-3">Featured Products</h2>
+                    <h2>Featured Products</h2>
                     <p class="text-muted">Discover our most loved wooden toys, crafted with care and designed to spark
                         joy and imagination.</p>
                 </div>
@@ -64,34 +66,45 @@
                 </div>
             </div>
         </section>
-        <section class="py-5 bg-light">
+        <section class="craftsmanship-section py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 mb-4 mb-md-0">
-                        <img src="images/car1.jpg" alt="Handcrafted wooden car" class="img-fluid rounded shadow">
+                        <div class="feature-image-container">
+                            <img src="images/car1.jpg" alt="Handcrafted wooden car" class="img-fluid feature-image">
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <h2 class="fw-bold mb-3">Crafted with Love</h2>
-                        <p class="mb-4">At Little Bird Toys, we believe in the magic of childhood and the power of
-                            imagination. Each toy is handcrafted with care using sustainably sourced woods and non-toxic
-                            materials.</p>
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-2"><i class="bi bi-leaf text-success me-2"></i> Eco-friendly materials
-                            </li>
-                            <li class="mb-2"><i class="bi bi-shield-check text-primary me-2"></i> Non-toxic finishes
-                            </li>
-                            <li><i class="bi bi-heart text-danger me-2"></i> Handmade with love</li>
-                        </ul>
-                        <a href="about.html" class="btn btn-outline-primary">Learn More About Us</a>
+                        <div class="feature-content">
+                            <h2>Crafted with Love</h2>
+                            <p class="mb-4">At Little Bird Toys, we believe in the magic of childhood and the power of
+                                imagination. Each toy is handcrafted with care using sustainably sourced woods and non-toxic
+                                materials.</p>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <i class="bi bi-leaf text-success feature-icon"></i>
+                                    <span>Eco-friendly materials</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-shield-check text-primary feature-icon"></i>
+                                    <span>Non-toxic finishes</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-heart text-danger feature-icon"></i>
+                                    <span>Handmade with love</span>
+                                </div>
+                            </div>
+                            <a href="about.html" class="btn btn-outline-primary mt-4">Learn More About Us</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="py-5">
+        <section class="testimonials-section py-5">
             <div class="container">
-                <div class="text-center mb-5">
+                <div class="section-header text-center mb-5">
                     <span class="badge bg-primary mb-2">Testimonials</span>
-                    <h2 class="fw-bold mb-3">What Our Customers Say</h2>
+                    <h2>What Our Customers Say</h2>
                     <p class="text-muted">Hear from families who have welcomed our wooden toys into their homes and
                         hearts.</p>
                 </div>
@@ -102,10 +115,10 @@
         </section>
         
         <!-- Call to Action Banner -->
-        <section class="py-5 bg-primary text-white text-center my-4 shadow-lg">
+        <section class="cta-section text-white text-center my-5">
             <div class="container">
-                <div class="py-3">
-                    <h2 class="fw-bold mb-4">Ready to Bring Magic to Playtime?</h2>
+                <div class="cta-content py-5">
+                    <h2>Ready to Bring Magic to Playtime?</h2>
                     <p class="lead mb-4">Discover our collection of heirloom-quality wooden toys that will inspire
                         creativity for generations.</p>
                     <a href="products.html" class="btn btn-light btn-lg px-4 shadow-sm">Shop Now</a>
@@ -153,6 +166,7 @@
     <script src="js/products.js"></script>
     <script src="js/reviews.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
 </body>
 
 </html>

@@ -1,14 +1,14 @@
 // Sample customer reviews data
 const customerReviews = [
 	{
-		name: "Stella Bella",
+		name: "Adriana Peterson",
 		location: "New York",
 		rating: 5,
 		text: "The wooden train set we purchased for our son's birthday is absolutely beautiful! The craftsmanship is outstanding and it's clear that a lot of care went into making it. He plays with it every day.",
 		image: "images/avatar1.jpg"
 	},
 	{
-		name: "Michael Peterson",
+		name: "Michael Johnson",
 		location: "Chicago",
 		rating: 5,
 		text: "These are the kinds of toys that get passed down through generations. The wooden airplane we bought has survived two energetic boys and still looks almost new. Worth every penny!",

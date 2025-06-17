@@ -12,6 +12,11 @@
 @import 'components/cards.css';
 @import 'components/modals.css';
 @import 'components/forms.css';
+@import 'components/sections.css';
+@import 'components/animations.css';
+@import 'components/navbar.css';
+@import 'components/footer.css';
+@import 'components/product-cards.css';
 
 /* Page-specific styles */
 @import 'pages/home.css';
@@ -20,5 +25,4 @@
 @import 'pages/contact.css';
 
 /* Utilities */
-@import 'utilities/animations.css';
 @import 'utilities/responsive.css';

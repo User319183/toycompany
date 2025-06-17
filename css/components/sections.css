@@ -1,0 +1,128 @@
+/* 
+* sections.css - Custom section styling for a cleaner layout
+*/
+
+/* Common section styles */
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+}
+
+/* Removed underline for cleaner layout */
+
+/* Craftsmanship section */
+.craftsmanship-section {
+    padding: 5rem 0;
+    background-color: var(--light-color);
+}
+
+.feature-image-container {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.feature-image {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.feature-content {
+    padding: 2rem;
+}
+
+.feature-content h2 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Removed underline for cleaner layout */
+
+.feature-list {
+    margin: 2rem 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+    margin-right: 12px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials section */
+.testimonials-section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* CTA Section */
+.cta-section {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+}
+
+.cta-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+}
