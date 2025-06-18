@@ -17,6 +17,7 @@
 @import 'components/navbar.css';
 @import 'components/footer.css';
 @import 'components/product-cards.css';
+@import 'components/reviews.css';
 
 /* Page-specific styles */
 @import 'pages/home.css';
