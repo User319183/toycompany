@@ -1,7 +1,7 @@
 /* Button Styles */
 
 .btn-primary {
-	background: linear-gradient(90deg, #4caf50, #2e7d32);
+	background: linear-gradient(90deg, #3f88c5, #136bbd);
 	border: none;
 	color: white;
 	padding: 0.8rem 2rem;
@@ -39,13 +39,13 @@
 }
 
 .btn-outline-secondary {
-	border-color: #2e7d32;
-	color: #2e7d32;
+	border-color: #3f88c5;
+	color: #3f88c5;
 	transition: var(--transition);
 	border-radius: 30px;
 	padding: 0.4rem 1rem;
 	font-weight: 500;
-	box-shadow: 0 3px 10px rgba(76, 175, 80, 0.1);
+	box-shadow: 0 3px 10px rgba(63, 136, 197, 0.1);
 }
 
 .btn-outline-secondary::before {
@@ -70,8 +70,8 @@
 }
 
 #contactForm .btn-primary {
-    padding: 10px 25px;
-    font-weight: 500;
+	padding: 10px 25px;
+	font-weight: 500;
 }
 
 .product-card .btn-outline-primary {
@@ -115,7 +115,7 @@
 	background-color: white;
 	color: var(--dark-color);
 	border: 1px solid #e0e0e0;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 	cursor: pointer;
 }
 

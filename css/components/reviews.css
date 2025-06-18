@@ -87,7 +87,8 @@
     font-size: 0.9rem;
 }
 
-.bi-star-fill, .bi-star {
+.bi-star-fill,
+.bi-star {
     margin-right: 2px;
     font-size: 1.1rem;
 }
@@ -102,9 +103,11 @@
     0% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-5px);
     }
+
     100% {
         transform: translateY(0px);
     }
@@ -160,12 +163,13 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(to right, #007bff, #4facfe);
+    background: linear-gradient(to right, #3f88c5, #136bbd);
     border-radius: 2px;
 }
 
 /* Styling for star icons */
-.bi-star-fill, .bi-star {
+.bi-star-fill,
+.bi-star {
     margin-right: 2px;
     font-size: 1.1rem;
 }
