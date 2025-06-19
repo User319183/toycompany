@@ -27,11 +27,40 @@
     object-fit: contain;
 }
 
+/* Price display */
+.price {
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.item-total-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    color: var(--bs-primary);
+}
+
+/* Quantity controls */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.quantity-input-group {
+    width: 120px;
+    margin: 0 auto;
+}
+
 .quantity-selector .form-control {
     max-width: 60px;
     text-align: center;
     height: 38px;
     box-shadow: none;
+    font-weight: 500;
 }
 
 .quantity-selector .btn {
@@ -100,20 +129,69 @@
 }
 
 /* Responsive cart adjustments */
+@media (max-width: 992px) {
+    .cart-item .row {
+        align-items: center;
+    }
+    
+    .price {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    
+    .item-total-price {
+        text-align: right;
+        font-size: 1.1rem;
+    }
+    
+    .quantity-selector {
+        margin: 0;
+    }
+}
+
 @media (max-width: 768px) {
     .cart-item .row {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "image name"
+            "price quantity"
+            "total remove";
+        gap: 10px;
     }
     
-    .cart-item .col-md-3,
-    .cart-item .col-md-2,
-    .cart-item .col-md-1 {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 0.75rem;
+    .cart-item .col-md-3:first-child {
+        grid-area: image;
     }
     
-    .cart-item .quantity-selector {
-        justify-content: center;
+    .cart-item .col-md-3:nth-child(2) {
+        grid-area: name;
+    }
+    
+    .cart-item .col-md-2:nth-child(3) {
+        grid-area: price;
+    }
+    
+    .cart-item .col-md-2:nth-child(4) {
+        grid-area: quantity;
+    }
+    
+    .cart-item .col-md-1:nth-child(5) {
+        grid-area: total;
+    }
+    
+    .cart-item .col-md-1:last-child {
+        grid-area: remove;
+    }
+    
+    .price, .item-total-price {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    
+    .cart-item .col-lg-1, 
+    .cart-item .col-lg-2, 
+    .cart-item .col-lg-4 {
+        margin-bottom: 0 !important;
     }
 }

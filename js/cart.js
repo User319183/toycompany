@@ -162,8 +162,8 @@ function displayCartItems() {
                             <span class="price">$${item.price.toFixed(2)}</span>
                         </div>
                         <div class="col-lg-2 col-md-2 mb-2 mb-md-0">
-                            <div class="quantity-selector d-flex align-items-center">
-                                <div class="input-group" style="width: 120px">
+                            <div class="quantity-selector">
+                                <div class="input-group quantity-input-group">
                                     <button class="btn btn-outline-secondary quantity-decrease" type="button">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -176,7 +176,7 @@ function displayCartItems() {
                             </div>
                         </div>
                         <div class="col-lg-1 col-md-1 text-end mb-2 mb-md-0">
-                            <span class="fw-bold">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <span class="item-total-price">$${(item.price * item.quantity).toFixed(2)}</span>
                         </div>
                         <div class="col-lg-1 col-md-1 text-end">
                             <button class="btn btn-link text-danger remove-item" aria-label="Remove item" data-product-id="${item.id}">
@@ -282,7 +282,6 @@ function updateOrderSummary() {
 
     // Add checkout button event listener
     document.getElementById('checkout-button').addEventListener('click', function () {
-        // This would normally proceed to a checkout page
         showToast('Checkout', 'This isn\'t real.');
     });
 }
@@ -309,7 +308,7 @@ function initProductQuantitySelector() {
     });
 }
 
-//Setup the cart button in the header
+// Setup the cart button in the header
 function setupCartButton() {
     const navbar = document.querySelector('.navbar-nav');
     if (!navbar) return;
