@@ -115,50 +115,50 @@
 
 /* Hover Cards */
 .hover-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hover-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+	transform: translateY(-10px);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Contact Info Cards */
 .contact-info-card {
-    transition: transform 0.3s ease;
+	transition: transform 0.3s ease;
 }
 
 .contact-info-card:hover {
-    transform: translateY(-5px);
+	transform: translateY(-5px);
 }
 
 /* Value Cards */
 .our-values .value-icon {
-    height: 90px;
-    width: 90px;
-    margin: 0 auto;
-    background-color: rgba(76, 175, 80, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
+	height: 90px;
+	width: 90px;
+	margin: 0 auto;
+	background-color: rgba(76, 175, 80, 0.1);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease;
 }
 
 .our-values .card:nth-child(2) .value-icon {
-    background-color: rgba(25, 118, 210, 0.1);
+	background-color: rgba(25, 118, 210, 0.1);
 }
 
 .our-values .card:nth-child(3) .value-icon {
-    background-color: rgba(244, 67, 54, 0.1);
+	background-color: rgba(244, 67, 54, 0.1);
 }
 
 .hover-card:hover .value-icon {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .our-values .badge {
-    padding: 8px 15px;
-    font-weight: 500;
-    border-radius: 30px;
+	padding: 8px 15px;
+	font-weight: 500;
+	border-radius: 30px;
 }
