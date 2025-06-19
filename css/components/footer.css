@@ -16,6 +16,14 @@ footer a:hover {
     text-decoration: underline;
 }
 
+footer a.social-link {
+    text-decoration: none;
+}
+
+footer a.social-link:hover {
+    text-decoration: none;
+}
+
 .footer-heading {
     font-weight: 600;
     margin-bottom: 20px;
@@ -45,9 +53,11 @@ footer a:hover {
     background: rgba(255, 255, 255, 0.1);
     color: white;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .social-link:hover {
     background: var(--primary-color);
     transform: translateY(-3px);
+    text-decoration: none;
 }
