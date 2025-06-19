@@ -19,6 +19,7 @@
 @import 'components/product-cards.css';
 @import 'components/reviews.css';
 @import 'components/cart.css';
+@import 'components/fixes.css';
 
 /* Page-specific styles */
 @import 'pages/home.css';
