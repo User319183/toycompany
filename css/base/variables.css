@@ -4,19 +4,15 @@
 
 :root {
 	--primary-color: #3f88c5;
-	/* Bright blue - more playful and appealing to kids */
 	--primary-light: rgba(63, 136, 197, 0.1);
 	--secondary-color: #ffb800;
-	/* Bright yellow - cheerful and fun */
 	--accent-color: #ff6b6b;
-	/* Soft red/coral - warm and friendly */
 	--light-color: #f8f9fa;
 	--dark-color: #2d3748;
 	--border-radius: 15px;
 	--box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 	--transition: all 0.4s ease;
 	--gradient: linear-gradient(135deg, #3f88c5, #136bbd);
-	/* Blue gradient */
 	--font-primary: "Poppins", sans-serif;
 	--font-secondary: "Montserrat", sans-serif;
 }
