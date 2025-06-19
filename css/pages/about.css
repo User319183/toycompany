@@ -312,7 +312,7 @@
     }
     
     .hero-image-container {
-        height: 450px; /* Increased height to accommodate moved down secondary image */
+        height: 450px;
     }
     
     .hero-main-image {
