@@ -86,7 +86,7 @@ function displayFeaturedProducts() {
 	const featuredProducts = products.filter((product) => product.featured);
 	featuredProducts.forEach((product) => {
 		const productCard = document.createElement("div");
-		productCard.className = "col-md-6 col-lg-3";        productCard.innerHTML = `
+		productCard.className = "col-md-6 col-lg-3"; productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
@@ -129,7 +129,7 @@ function displayAllProducts() {
 	products.forEach((product) => {
 		const productCard = document.createElement("div");
 		productCard.className = "col-sm-6 col-lg-4";
-		productCard.setAttribute("data-category", product.category);        productCard.innerHTML = `
+		productCard.setAttribute("data-category", product.category); productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
@@ -304,32 +304,32 @@ function setupProductDetails() {
 
 // Function to ensure proper cleanup after modal close
 function ensureModalCleanup() {
-    const backdrop = document.querySelector('.modal-backdrop');
-    if (backdrop) {
-        backdrop.remove();
-    }
-    document.body.classList.remove('modal-open');
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
+	const backdrop = document.querySelector('.modal-backdrop');
+	if (backdrop) {
+		backdrop.remove();
+	}
+	document.body.classList.remove('modal-open');
+	document.body.style.overflow = '';
+	document.body.style.paddingRight = '';
 }
 
 document.addEventListener("DOMContentLoaded", function () {
 	if (document.getElementById("featured-products-container")) {
 		displayFeaturedProducts();
 	}
-	
+
 	// Ensure proper cleanup for Continue Shopping button
 	const continueShoppingBtn = document.getElementById('continueShopping');
 	if (continueShoppingBtn) {
-	    continueShoppingBtn.addEventListener('click', function() {
-	        // Give a small timeout to ensure modal is properly dismissed before cleanup
-	        setTimeout(ensureModalCleanup, 150);
-	    });
+		continueShoppingBtn.addEventListener('click', function () {
+			// Give a small timeout to ensure modal is properly dismissed before cleanup
+			setTimeout(ensureModalCleanup, 150);
+		});
 	}
-	
+
 	// Add an event listener to the modal itself for proper cleanup
 	const productModal = document.getElementById('productModal');
 	if (productModal) {
-	    productModal.addEventListener('hidden.bs.modal', ensureModalCleanup);
+		productModal.addEventListener('hidden.bs.modal', ensureModalCleanup);
 	}
 });

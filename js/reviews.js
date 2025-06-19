@@ -60,7 +60,7 @@ function displayReviews() {
 
 		// Create review card
 		const reviewCard = document.createElement('div');
-		reviewCard.className = 'col-md-6';        reviewCard.innerHTML = `
+		reviewCard.className = 'col-md-6'; reviewCard.innerHTML = `
             <div class="testimonial-item">
                 <div class="testimonial-content">
                     <div class="testimonial-quote">
