@@ -238,21 +238,35 @@
 /* Team Section Styles */
 .team-member {
     position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-member:hover {
     transform: translateY(-10px);
 }
 
-.team-image {
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
+.team-icon {
+    height: 80px;
+    width: 80px;
     margin: 0 auto;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.team-member:hover .team-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.specialty {
+    transition: all 0.3s ease;
+}
+
+.team-member:hover .specialty {
+    background-color: rgba(var(--bs-primary-rgb), 0.1) !important;
 }
 
 .team-image img {
