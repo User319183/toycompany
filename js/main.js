@@ -55,26 +55,9 @@ function setupSmoothScrolling() {
 }
 
 function initScrollToTopButton() {
-	const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-	if (!scrollToTopBtn) {
-		return;
-	}
-
-	window.addEventListener("scroll", function () {
-		if (window.scrollY > 300) {
-			scrollToTopBtn.classList.add("show");
-		} else {
-			scrollToTopBtn.classList.remove("show");
-		}
-	});
-
-	scrollToTopBtn.addEventListener("click", function () {
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
-	});
+	// This function is now a placeholder since we removed the scroll-to-top button
+	// We keep the function to prevent any errors if it's still being called elsewhere
+	return;
 }
 
 // Initialize parallax effect
@@ -192,7 +175,6 @@ function initNavbarScroll() {
 
 document.addEventListener("DOMContentLoaded", function () {
 	setupSmoothScrolling();
-	initScrollToTopButton();
 	initParallax();
 	initCounters();
 	initReviewCarousel();
