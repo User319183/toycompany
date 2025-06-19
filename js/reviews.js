@@ -34,7 +34,7 @@ const customerReviews = [
 	}
 ];
 
-// Function to display reviews
+// Display reviews
 function displayReviews() {
 	const reviewsContainer = document.getElementById('reviews-container');
 

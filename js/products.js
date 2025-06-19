@@ -275,12 +275,12 @@ function showProductDetails(productId) {
 					<div class="quantity-selector mb-3 d-flex align-items-center">
 						<span class="me-3 fw-bold">Quantity:</span>
 						<div class="input-group" style="width: 130px">
-							<button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
-							<input type="text" class="form-control text-center" value="1" aria-label="Quantity">
-							<button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+							<button class="btn btn-outline-secondary product-quantity-decrease" type="button"><i class="fas fa-minus"></i></button>
+							<input type="text" class="form-control text-center product-quantity-input" value="1" aria-label="Quantity">
+							<button class="btn btn-outline-secondary product-quantity-increase" type="button"><i class="fas fa-plus"></i></button>
 						</div>
 					</div>
-					<button class="btn btn-primary btn-lg w-100">
+					<button class="btn btn-primary btn-lg w-100" data-product-id="${product.id}">
 						<i class="fas fa-shopping-cart me-2"></i> Add to Cart
 					</button>
 				</div>
