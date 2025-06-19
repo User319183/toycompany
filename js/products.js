@@ -302,8 +302,34 @@ function setupProductDetails() {
 	});
 }
 
+// Function to ensure proper cleanup after modal close
+function ensureModalCleanup() {
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+        backdrop.remove();
+    }
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 	if (document.getElementById("featured-products-container")) {
 		displayFeaturedProducts();
+	}
+	
+	// Ensure proper cleanup for Continue Shopping button
+	const continueShoppingBtn = document.getElementById('continueShopping');
+	if (continueShoppingBtn) {
+	    continueShoppingBtn.addEventListener('click', function() {
+	        // Give a small timeout to ensure modal is properly dismissed before cleanup
+	        setTimeout(ensureModalCleanup, 150);
+	    });
+	}
+	
+	// Add an event listener to the modal itself for proper cleanup
+	const productModal = document.getElementById('productModal');
+	if (productModal) {
+	    productModal.addEventListener('hidden.bs.modal', ensureModalCleanup);
 	}
 });

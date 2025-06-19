@@ -344,6 +344,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // If the product detail modal exists, set up the add to cart functionality
     const productModal = document.getElementById('productModal');
     if (productModal) {
+        // Handle modal hidden event to ensure proper cleanup of backdrop
+        productModal.addEventListener('hidden.bs.modal', function() {
+            // Check if backdrop still exists and remove it if it does
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+            // Restore body classes
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        });
+        
         productModal.addEventListener('show.bs.modal', function() {
             setTimeout(() => {
                 const addToCartBtn = document.querySelector('.modal-body .btn-primary');
