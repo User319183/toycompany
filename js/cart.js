@@ -283,7 +283,7 @@ function updateOrderSummary() {
     // Add checkout button event listener
     document.getElementById('checkout-button').addEventListener('click', function() {
         // This would normally proceed to a checkout page
-        showToast('Checkout', 'This would take you to a checkout page in a real e-commerce site.');
+        showToast('Checkout', 'This isn\'t real.');
     });
 }
 
