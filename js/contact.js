@@ -77,11 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // This shows a blue info message saying the message is being sent
             // 'info' makes the message blue (Bootstrap's info color)
 
-            // Simulate form submission with a timeout (would be replaced with actual AJAX in production)
+            // Form submission with a timeout
             setTimeout(function () {
                 // setTimeout runs the function inside it after a delay (1500 milliseconds)
-                // This simulates the time it might take to send an email to a server
-                // In a real website, this would be replaced with code that actually sends the data
 
                 // Reset the form fields
                 contactForm.reset();
