@@ -1,15 +1,17 @@
+// This array stores all the product information for our online toy store
+// Each product is an object with properties like id, name, price, etc.
 const products = [
 	{
-		id: 1,
-		name: "Wooden Airplane",
-		price: 24.99,
-		image: "images/plane1.jpg",
-		images: ["images/plane1.jpg", "images/plane2.jpg", "images/plane3.jpg"],
-		description: "Soar through imaginative skies with this classic wooden airplane.",
-		detailedDescription: "Handcrafted from sustainable Baltic birch wood with a safe, natural harvest finish and a spinning propeller. Measures 3.5\"H x 7\"L x 7\"W.",
-		age: "Toddlers",
-		category: "airplanes",
-		featured: true,
+		id: 1,                                  // Unique identifier for the product
+		name: "Wooden Airplane",                // Name of the toy product
+		price: 24.99,                           // Price in dollars
+		image: "images/plane1.jpg",             // Main image path for the product
+		images: ["images/plane1.jpg", "images/plane2.jpg", "images/plane3.jpg"],  // Array of all product images for the gallery
+		description: "Soar through imaginative skies with this classic wooden airplane.",  // Short description for product cards
+		detailedDescription: "Handcrafted from sustainable Baltic birch wood with a safe, natural harvest finish and a spinning propeller. Measures 3.5\"H x 7\"L x 7\"W.",  // Longer description for product detail modal
+		age: "Toddlers",                        // Recommended age group for the toy
+		category: "airplanes",                  // Product category for filtering
+		featured: true,                         // Whether this product should appear in the featured section
 	},
 	{
 		id: 2,
@@ -73,20 +75,42 @@ const products = [
 	},
 ];
 
+/**
+ * This function displays the featured products on the homepage
+ * It creates product cards for items marked as featured in our products array
+ */
 function displayFeaturedProducts() {
+	// Find the container element where we'll put our featured products
 	const featuredProductsContainer = document.getElementById(
 		"featured-products-container"
 	);
 
+	// Check if the container exists on the current page
 	if (!featuredProductsContainer) {
+		// If the container doesn't exist, show an error message in the console
 		console.error("Featured products container not found!");
+		// Exit the function early to avoid errors
 		return;
 	}
 
+	// Filter the products array to get only the featured products
+	// The filter method creates a new array with only items that pass the test
+	// Here we're keeping only products where featured is true
 	const featuredProducts = products.filter((product) => product.featured);
+	
+	// Loop through each featured product and create a card for it
 	featuredProducts.forEach((product) => {
+		// Create a new div element for the product card
 		const productCard = document.createElement("div");
-		productCard.className = "col-md-6 col-lg-3"; productCard.innerHTML = `
+		
+		// Add Bootstrap responsive column classes
+		// col-md-6 means take up half the width on medium screens
+		// col-lg-3 means take up a quarter of the width on large screens
+		productCard.className = "col-md-6 col-lg-3"; 
+		
+		// Create the HTML content for the product card using a template literal
+		// Template literals allow us to insert variables using ${variable}
+		productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
@@ -104,32 +128,62 @@ function displayFeaturedProducts() {
             </div>
         `;
 
+		// Add the product card to the container
 		featuredProductsContainer.appendChild(productCard);
 	});
 
+	// Add click event listeners to all "View Details" buttons
+	// First find all buttons with the class "view-details"
 	document.querySelectorAll(".view-details").forEach((button) => {
+		// Add a click event listener to each button
 		button.addEventListener("click", function () {
+			// Get the product ID from the button's data attribute
+			// parseInt converts the string attribute to a number
 			const productId = parseInt(this.getAttribute("data-product-id"));
+			
+			// Call the function to show the product details modal with this ID
 			showProductDetails(productId);
 		});
 	});
 }
 
+/**
+ * This function displays all products on the products page
+ * It creates product cards for all items in our products array
+ */
 function displayAllProducts() {
+	// Find the container element where we'll put all our products
 	const productsContainer = document.getElementById("products-container");
 
+	// Check if the container exists on the current page
 	if (!productsContainer) {
+		// If the container doesn't exist, show an error message in the console
 		console.error("Products container not found!");
+		// Exit the function early to avoid errors
 		return;
 	}
 
-	// Clear existing content
+	// Clear existing content from the container
+	// This ensures we don't add duplicate products if this function runs multiple times
 	productsContainer.innerHTML = "";
 
+	// Loop through each product and create a card for it
 	products.forEach((product) => {
+		// Create a new div element for the product card
 		const productCard = document.createElement("div");
+		
+		// Add Bootstrap responsive column classes
+		// col-sm-6 means take up half the width on small screens
+		// col-lg-4 means take up a third of the width on large screens
 		productCard.className = "col-sm-6 col-lg-4";
-		productCard.setAttribute("data-category", product.category); productCard.innerHTML = `
+		
+		// Add a data attribute for the product category
+		// This will be used later for filtering products by category
+		productCard.setAttribute("data-category", product.category); 
+		
+		// Create the HTML content for the product card using a template literal
+		// This creates a more detailed card than the featured products version
+		productCard.innerHTML = `
             <div class="card product-card h-100">
                 <div class="product-image-container">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}" onerror="this.src='images/placeholder.jpg'">
@@ -151,40 +205,67 @@ function displayAllProducts() {
             </div>
         `;
 
+		// Add the product card to the container
 		productsContainer.appendChild(productCard);
 	});
 
 	// Add event listeners to all "Learn More" buttons
+	// First find all buttons with the class "learn-more"
 	document.querySelectorAll(".learn-more").forEach((button) => {
+		// Add a click event listener to each button
 		button.addEventListener("click", function () {
+			// Get the product ID from the button's data attribute
+			// parseInt converts the string attribute to a number
 			const productId = parseInt(this.getAttribute("data-product-id"));
+			
+			// Call the function to show the product details modal with this ID
 			showProductDetails(productId);
 		});
 	});
 }
 
+/**
+ * This function sets up the product category filter buttons
+ * It allows users to filter products by category (trains, airplanes, etc.)
+ */
 function setupFilterButtons() {
+	// Find all filter buttons on the page that have the class "filter-btn"
 	const filterButtons = document.querySelectorAll(".filter-btn");
+	
+	// Find all product cards that have a data-category attribute
+	// The [data-category] selector finds elements that have this attribute
 	const productCards = document.querySelectorAll("[data-category]");
 
+	// Loop through each filter button to add click event listeners
 	filterButtons.forEach((button) => {
+		// Add a click event listener to each button
 		button.addEventListener("click", function () {
+			// Get the filter value from the button's data-filter attribute
+			// This will be either "all" or a specific category like "airplanes", "trains", etc.
 			const filter = this.getAttribute("data-filter");
 
-			// Update active state on buttons
+			// Update active state on buttons (change which button looks selected)
+			// First, remove the active class from all buttons
 			filterButtons.forEach((btn) => btn.classList.remove("active"));
+			// Then add the active class to just the clicked button
 			this.classList.add("active");
 
 			// Show all products if filter is "all", otherwise filter by category
 			if (filter === "all") {
+				// If the "All" button was clicked, show every product
 				productCards.forEach((card) => {
+					// Make all product cards visible
 					card.style.display = "block";
 				});
 			} else {
+				// If a specific category button was clicked, show only matching products
 				productCards.forEach((card) => {
+					// Check if this card's category matches the selected filter
 					if (card.getAttribute("data-category") === filter) {
+						// If it matches, show this product card
 						card.style.display = "block";
 					} else {
+						// If it doesn't match, hide this product card
 						card.style.display = "none";
 					}
 				});
@@ -193,37 +274,58 @@ function setupFilterButtons() {
 	});
 }
 
+/**
+ * This function displays a detailed modal popup for a specific product
+ * @param {number} productId - The id of the product to display
+ */
 function showProductDetails(productId) {
+	// Find the product with the matching ID in our products array
+	// The find method returns the first item that passes the test function
 	const product = products.find((p) => p.id === productId);
 
+	// Check if a product was found
 	if (!product) {
+		// If the product doesn't exist, show an error message in the console
 		console.error("Product not found!");
+		// Exit the function early to avoid errors
 		return;
 	}
 
+	// Find the container element where we'll put our product details
 	const modalContent = document.getElementById("productModalContent");
 
+	// Check if the modal container exists
 	if (!modalContent) {
+		// If the container doesn't exist, show an error message
 		console.error("Modal content container not found!");
+		// Exit the function early to avoid errors
 		return;
 	}
 
-	// Update modal title
+	// Update modal title with the product name
 	document.getElementById("productModalLabel").textContent = product.name;
 
+	// Variable to hold the HTML for either a carousel or single image
 	let imageCarousel = '';
 
+	// Check if the product has multiple images
 	if (product.images && product.images.length > 1) {
+		// Create the carousel indicator buttons (the dots at the bottom)
+		// map creates a new array by transforming each item in the original array
 		const carouselIndicators = product.images.map((img, index) =>
+			// For each image, create an indicator button with the proper attributes
 			`<button type="button" data-bs-target="#productImageCarousel" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>`
-		).join('');
+		).join(''); // join combines all array items into a single string
 
+		// Create the carousel slides (one for each product image)
 		const carouselItems = product.images.map((img, index) =>
+			// For each image, create a carousel slide with the proper attributes
 			`<div class="carousel-item ${index === 0 ? 'active' : ''}">
 				<img src="${img}" class="d-block w-100 rounded-3" alt="${product.name} - View ${index + 1}">
 			</div>`
-		).join('');
+		).join(''); // join combines all array items into a single string
 
+		// Create the complete Bootstrap carousel HTML structure
 		imageCarousel = `
 			<div id="productImageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
 				<div class="carousel-indicators">
@@ -243,9 +345,12 @@ function showProductDetails(productId) {
 			</div>
 		`;
 	} else {
+		// If there's only one image, just display it without a carousel
 		imageCarousel = `<img src="${product.image}" class="img-fluid rounded-3 shadow" alt="${product.name}">`;
 	}
 
+	// Build the complete modal content HTML using a template literal
+	// This includes the product details and layout structure
 	modalContent.innerHTML = `
 		<div class="row">
 			<div class="col-lg-6 mb-4 mb-lg-0">
@@ -288,48 +393,93 @@ function showProductDetails(productId) {
 		</div>
 	`;
 
+	// Create a new Bootstrap modal using the productModal element
+	// The Bootstrap Modal is a popup dialog box component
 	const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+	
+	// Display the modal by calling its show() method
 	productModal.show();
 }
 
+/**
+ * This function sets up click events for all product detail buttons
+ * Allows product details to be shown from anywhere on the site
+ */
 function setupProductDetails() {
-	// This ensures that product modals can be triggered from anywhere
+	// Find all elements with a data-product-id attribute
+	// This selects any element that can trigger a product detail modal
 	document.querySelectorAll('[data-product-id]').forEach(element => {
+		// Add a click event listener to each element
 		element.addEventListener('click', function () {
+			// Get the product ID from the element's data attribute
+			// parseInt converts the string attribute to a number
 			const productId = parseInt(this.getAttribute('data-product-id'));
+			// Call the function to show the product details modal
 			showProductDetails(productId);
 		});
 	});
 }
 
-// Function to ensure proper cleanup after modal close
+/**
+ * Function to ensure proper cleanup after modal close
+ * Fixes Bootstrap modal issues like stuck backdrops or scrolling problems
+ */
 function ensureModalCleanup() {
+	// Find the modal backdrop element (the dark overlay behind modals)
 	const backdrop = document.querySelector('.modal-backdrop');
+	
+	// Check if the backdrop exists
 	if (backdrop) {
+		// Remove the backdrop element from the DOM completely
 		backdrop.remove();
 	}
+	
+	// Remove the 'modal-open' class from the body
+	// This class prevents scrolling on the main page while a modal is open
 	document.body.classList.remove('modal-open');
+	
+	// Reset the body's overflow style to enable scrolling again
 	document.body.style.overflow = '';
+	
+	// Remove any padding added to the body by Bootstrap
+	// Bootstrap adds padding to prevent layout shift when scrollbars appear/disappear
 	document.body.style.paddingRight = '';
 }
 
+/**
+ * This event listener runs when the HTML document is fully loaded
+ * It initializes all product-related functionality
+ */
 document.addEventListener("DOMContentLoaded", function () {
+	// Check if we're on a page with the featured products container
+	// This helps us only run code that's needed for the current page
 	if (document.getElementById("featured-products-container")) {
+		// If we found the featured products container, display featured products
 		displayFeaturedProducts();
 	}
 
-	// Ensure proper cleanup for Continue Shopping button
+	// Set up the "Continue Shopping" button in the modal
+	// Find the button by its ID
 	const continueShoppingBtn = document.getElementById('continueShopping');
+	
+	// Check if the button exists on this page
 	if (continueShoppingBtn) {
+		// Add a click event listener to the button
 		continueShoppingBtn.addEventListener('click', function () {
-			// Give a small timeout to ensure modal is properly dismissed before cleanup
+			// Use setTimeout to delay the cleanup by 150 milliseconds
+			// This ensures the modal is fully dismissed before cleanup
 			setTimeout(ensureModalCleanup, 150);
 		});
 	}
 
-	// Add an event listener to the modal itself for proper cleanup
+	// Add cleanup when the product modal is hidden
+	// Find the modal element by its ID
 	const productModal = document.getElementById('productModal');
+	
+	// Check if the modal exists on this page
 	if (productModal) {
+		// Listen for Bootstrap's 'hidden.bs.modal' event
+		// This event fires when the modal has finished being hidden
 		productModal.addEventListener('hidden.bs.modal', ensureModalCleanup);
 	}
 });
